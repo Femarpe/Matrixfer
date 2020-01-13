@@ -47,7 +47,7 @@ public class Game {
                 xojo = x - 5;
             }
 
-            if (y == 10){
+            if (y == 0){
                 y+=5;
                 yojo = y + 5;
             } else if (dam.c1k.Window.isPressedKey(87) == true){
@@ -55,7 +55,7 @@ public class Game {
                 yojo = y - 5;
             }
 
-            if (y == 990){
+            if (y == 700){
                 y-=5;
                 yojo = y - 5;
             } else if (dam.c1k.Window.isPressedKey(83) == true) {
