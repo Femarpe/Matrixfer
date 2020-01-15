@@ -1,5 +1,6 @@
 
 import graphics.dam.Canvas;
+import maths.dam.Helpers;
 import maths.dam.Matrix2D;
 
 public class Game {
@@ -24,9 +25,9 @@ public class Game {
         int myojo = 0;
         boolean xt = true;
 
-
+        double dis = 965;
         Personaje p = new Personaje();
-
+        Helpers helpers = new Helpers();
 
         while (true) {
             canvas.clear(m, background);
@@ -103,6 +104,8 @@ public class Game {
                 my += velocidadGato;
                 myojo = my + velocidadGato;
             }
+            dis = helpers.computeDistance2D(x, mx + 700, y, my + 700);
+            System.out.println(helpers.computeDistance2D(x, mx + 700, y, my + 700));
 
             m.swapP();
             dam.c1k.Window.showImage(m.getWidth(), m.getHeight(), m.getValues());

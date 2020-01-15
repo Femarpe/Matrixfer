@@ -15,7 +15,7 @@ public class Personaje {
 
     public void pintarCarax (Matrix2D m, int x, int y, int xojo, int yojo ) {
 
-        canvas.fillCircle(m, amarillo, 150 + x, 150 + y, 100);
+        canvas.fillCircle(m, amarillo, 150 + x, 150 + y, 200);
         canvas.fillCircle(m, blanco, 120 + x, 100 + y, 25);
         canvas.fillCircle(m, blanco, 180 + x, 100 + y, 25);
         canvas.fillCircle(m, negro, 120 + xojo, 100 + yojo, 10);
@@ -60,4 +60,5 @@ public class Personaje {
         canvas.fillRectangle(m, blanco, 770 + mx, 860 + my, 30, 15);
         canvas.fillRectangle(m, blanco, 900 + mx, 860 + my, 30, 15);
     }
+
 }
