@@ -1,19 +1,20 @@
 import graphics.dam.Canvas;
+import graphics.dam.CanvasImp;
 import maths.dam.Matrix2D;
 
 public class Personaje {
+CanvasImp canvas = new CanvasImp();
     int vida = 100;
     int danyo = 1;
 
-    int amarillo = Canvas.toARGB(255, 255, 255, 0);
-    int blanco = Canvas.toARGB(255, 255, 255, 255);
-    int rojo = Canvas.toARGB(250, 255, 0, 0);
-    int negro = Canvas.toARGB(255, 0, 0, 0);
-    int gris = Canvas.toARGB(255, 100, 100, 100);
+    int amarillo = canvas.toARGB(255, 255, 255, 0);
+    int blanco = canvas.toARGB(255, 255, 255, 255);
+    int rojo = canvas.toARGB(250, 255, 0, 0);
+    int negro = canvas.toARGB(255, 0, 0, 0);
+    int gris = canvas.toARGB(255, 100, 100, 100);
 
-    Canvas canvas = new Canvas();
 
-    public void pintarCarax (Matrix2D m, int x, int y, int xojo, int yojo ) {
+    public void pintarCarax (Matrix2D m, double x, double y, double xojo, double yojo ) {
 
         canvas.fillCircle(m, amarillo, 150 + x, 150 + y, 200);
         canvas.fillCircle(m, blanco, 120 + x, 100 + y, 25);
@@ -28,7 +29,7 @@ public class Personaje {
         canvas.fillRectangle(m, blanco, 200 + x, 160 + y, 30, 15);
     }
 
-    public void pintarCaraRaton (Matrix2D m, int x, int y, int xojo, int yojo ) {
+    public void pintarCaraRaton (Matrix2D m, double x, double y, double xojo, double yojo ) {
 
 
         canvas.fillCircle(m, gris, 150 + x, 150 + y, 60);
@@ -44,7 +45,7 @@ public class Personaje {
         canvas.fillRectangle(m, blanco, 170 + x, 160 + y, 30, 15);
     }
 
-    public void pintarCaraMalGato(Matrix2D m, int mx, int my, int mxojo, int myojo ) {
+    public void pintarCaraMalGato(Matrix2D m, double mx, double my, double mxojo, double myojo ) {
 
 
         canvas.fillCircle(m, rojo, 850 + mx, 850 + my, 100);

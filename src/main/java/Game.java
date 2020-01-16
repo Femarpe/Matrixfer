@@ -1,38 +1,50 @@
 
+import DAM.c1k.DAM;
 import graphics.dam.Canvas;
+import graphics.dam.CanvasImp;
 import maths.dam.Helpers;
 import maths.dam.Matrix2D;
 
+import javax.swing.*;
+import java.io.File;
+
 public class Game {
+    public void movimientos(){
+
+    }
 
     public void startGame() {
-        Canvas canvas = new Canvas();
+        CanvasImp canvas = new CanvasImp();
         Matrix2D m = new Matrix2D(1000, 1000);
-        int background = Canvas.toARGB(255, 255, 255, 255);
+        int background = canvas.toARGB(255, 255, 255, 255);
         canvas.clear(m, background);
         Personaje p = new Personaje();
 
 
-        int velocidadjugador = 10;
-        int x = 0;
-        int xojo = 0;
-        int y = 0;
-        int yojo = 0;
-        int vida = p.getVida();
+        double velocidadjugador = 10;
+        double x = 0;
+        double xojo = 0;
+        double y = 0;
+        double yojo = 0;
+        double vida = p.getVida();
+        boolean ratonvive = true;
 
-        int velocidadGato = 7;
-        int mx = 0;
-        int my = 0;
-        int mxojo = 0;
-        int myojo = 0;
-        int damage = p.getDanyo();
+        double velocidadGato = 7;
+        double mx = 0;
+        double my = 0;
+        double mxojo = 0;
+        double myojo = 0;
+        double damage = p.getDanyo();
         boolean xt = true;
 
 
         double dis = 965;
         Helpers helpers = new Helpers();
 
-        while (true) {
+        //while (true) {
+        for (int i = 0; i < 1500; i++) {
+
+
             canvas.clear(m, background);
 
             /**jugador*/
@@ -112,15 +124,31 @@ public class Game {
             if (dis < 160) {
                 vida -= damage;
                 System.out.println("te quedan " + vida + " puntos de vida");
+                /*
+                x = 0;
+                xojo = 0;
+                mx = 0;
+                mxojo = 0;
+                y = 0;
+                yojo = 0;
+                my = 0;
+                myojo = 0;
+                */
             }
+
 
             m.swapP();
             dam.c1k.Window.showImage(m.getWidth(), m.getHeight(), m.getValues());
             if (vida <= 0) {
+                ratonvive = false;
                 break;
             }
-
         }
-        //DAM.saveImage(new File("C:\\users\\kurur\\desktop\\imgprog\\risason.png"), m.getValues(), m.getWidth(), m.getHeight(), null);
+        if (ratonvive == false) {
+            JOptionPane.showMessageDialog(null, "ha ganao el gatico");
+        } else {
+            JOptionPane.showMessageDialog(null,"Gana el raton mamadisimo");
+        }
+        DAM.saveImage(new File("C:\\users\\kurur\\desktop\\imgprog\\partida.png"), m.getValues(), m.getWidth(), m.getHeight(), null);
     }
 }
