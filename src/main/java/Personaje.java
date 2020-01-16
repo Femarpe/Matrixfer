@@ -2,8 +2,8 @@ import graphics.dam.Canvas;
 import maths.dam.Matrix2D;
 
 public class Personaje {
-    int vida = 10;
-    int danyo = 5;
+    int vida = 100;
+    int danyo = 1;
 
     int amarillo = Canvas.toARGB(255, 255, 255, 0);
     int blanco = Canvas.toARGB(255, 255, 255, 255);
@@ -61,4 +61,11 @@ public class Personaje {
         canvas.fillRectangle(m, blanco, 900 + mx, 860 + my, 30, 15);
     }
 
+    public int getVida() {
+        return vida;
+    }
+
+    public int getDanyo() {
+        return danyo;
+    }
 }

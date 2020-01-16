@@ -10,6 +10,7 @@ public class Game {
         Matrix2D m = new Matrix2D(1000, 1000);
         int background = Canvas.toARGB(255, 255, 255, 255);
         canvas.clear(m, background);
+        Personaje p = new Personaje();
 
 
         int velocidadjugador = 10;
@@ -17,16 +18,18 @@ public class Game {
         int xojo = 0;
         int y = 0;
         int yojo = 0;
+        int vida = p.getVida();
 
         int velocidadGato = 7;
         int mx = 0;
         int my = 0;
         int mxojo = 0;
         int myojo = 0;
+        int damage = p.getDanyo();
         boolean xt = true;
 
+
         double dis = 965;
-        Personaje p = new Personaje();
         Helpers helpers = new Helpers();
 
         while (true) {
@@ -105,10 +108,17 @@ public class Game {
                 myojo = my + velocidadGato;
             }
             dis = helpers.computeDistance2D(x, mx + 700, y, my + 700);
-            System.out.println(helpers.computeDistance2D(x, mx + 700, y, my + 700));
+            //System.out.println(helpers.computeDistance2D(x, mx + 700, y, my + 700));
+            if (dis < 160) {
+                vida -= damage;
+                System.out.println("te quedan " + vida + " puntos de vida");
+            }
 
             m.swapP();
             dam.c1k.Window.showImage(m.getWidth(), m.getHeight(), m.getValues());
+            if (vida <= 0) {
+                break;
+            }
 
         }
         //DAM.saveImage(new File("C:\\users\\kurur\\desktop\\imgprog\\risason.png"), m.getValues(), m.getWidth(), m.getHeight(), null);
