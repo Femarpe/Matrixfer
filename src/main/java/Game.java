@@ -37,12 +37,13 @@ public class Game {
         double damage = p.getDanyo();
         boolean xt = true;
 
+        int tiempo = m.getWidth();
 
         double dis = 965;
         Helpers helpers = new Helpers();
 
         //while (true) {
-        for (int i = 0; i < 1500; i++) {
+        for (int i = 0; i < tiempo; i++) {
 
 
             canvas.clear(m, background);
@@ -124,19 +125,11 @@ public class Game {
             if (dis < 160) {
                 vida -= damage;
                 System.out.println("te quedan " + vida + " puntos de vida");
-                /*
-                x = 0;
-                xojo = 0;
-                mx = 0;
-                mxojo = 0;
-                y = 0;
-                yojo = 0;
-                my = 0;
-                myojo = 0;
-                */
+
+
             }
-
-
+            p.mostrarBarraVida(m,vida);
+            p.mostrarBarratiempo(m,i);
             m.swapP();
             dam.c1k.Window.showImage(m.getWidth(), m.getHeight(), m.getValues());
             if (vida <= 0) {
