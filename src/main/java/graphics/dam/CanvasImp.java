@@ -8,56 +8,76 @@ public class CanvasImp implements Canvas {
     public static final int GREEN_DISPALCEMENT = 8;
     public static final int RED_DISPALCEMENT = 0;
     public static final int ALPHA_DISPALCEMENT = 24;
+
     @Override
-    public int toARGB(int a, int r, int g, int b){
+    public int toARGB(int a, int r, int g, int b) {
         int result;
-        if (b > 255){ b = 255;} else if (b < 0){b = 0;}
+        if (b > 255) {
+            b = 255;
+        } else if (b < 0) {
+            b = 0;
+        }
         result = (b << BLUE_DISPALCEMENT);
-        if (g > 255){ g = 255;} else if (g < 0){g = 0;}
+        if (g > 255) {
+            g = 255;
+        } else if (g < 0) {
+            g = 0;
+        }
         result |= (g << GREEN_DISPALCEMENT);
-        if (r > 255){ r = 255;} else if (r < 0){r = 0;}
+        if (r > 255) {
+            r = 255;
+        } else if (r < 0) {
+            r = 0;
+        }
         result |= (r << RED_DISPALCEMENT);
-        if (a > 255){ a = 255;} else if (a < 0){a = 0;}
+        if (a > 255) {
+            a = 255;
+        } else if (a < 0) {
+            a = 0;
+        }
         result |= (a << ALPHA_DISPALCEMENT);
-        return result ;
+        return result;
     }
+
     @Override
-    public void clear(Matrix2D img, int color){
-        if (img == null){
+    public void clear(Matrix2D img, int color) {
+        if (img == null) {
             return;
         }
 
         for (int y = 0; y < img.getHeight(); y++) {
             for (int x = 0; x < img.getWidth(); x++) {
-                img.setValues(x, y, color);
+                img.setValue(x, y, color);
             }
         }
     }
+
     @Override
-    public void fillRectangle(Matrix2D img, int color, double x, double y, int w, int h){
+    public void fillRectangle(Matrix2D img, int color, double x, double y, int w, int h) {
         int hr = (int) (y + h);
         int wr = (int) (x + w);
 
-        if ( hr > img.getHeight()){
+        if (hr > img.getHeight()) {
             hr = img.getHeight();
-        } else if ( y < 0){
+        } else if (y < 0) {
             y = 0;
         }
-        if ( wr > img.getWidth()){
+        if (wr > img.getWidth()) {
             wr = img.getWidth();
-        } else if ( x < 0){
+        } else if (x < 0) {
             x = 0;
         }
 
-        for (int iY = (int) y; iY < hr ; iY++) {
-            for (int iX = (int) x; iX < wr ; iX++) {
-                img.setValues(iX, iY, color);
+        for (int iY = (int) y; iY < hr; iY++) {
+            for (int iX = (int) x; iX < wr; iX++) {
+                img.setValue(iX, iY, color);
 
             }
         }
     }
+
     @Override
-    public void fillCircle(Matrix2D img, int color, double x, double y, int r){
+    public void fillCircle(Matrix2D img, int color, double x, double y, int r) {
         Helpers helpers = new Helpers();
 
         for (int iy = (int) (y - r); iy < y + r; iy++) {
@@ -67,10 +87,26 @@ public class CanvasImp implements Canvas {
 
 
                 if (distancia < r)
-                img.setValues(ix, iy, color);
+                    img.setValue(ix, iy, color);
+
+            }
+        }
+    }
+
+    @Override
+    public void drawImage(Matrix2D img, Matrix2D m, double x, double y) {
+
+        int w = img.getWidth();
+        int h = img.getHeight();
+        int xint = (int) x;
+        int yint = (int) y;
+        for (int iY = 0; iY < h; iY++) {
+            for (int iX = 0; iX < w; iX++) {
+                m.setValue(iX + x, iY + y, img.getValue(iX, iY));
 
             }
         }
     }
 }
+
 

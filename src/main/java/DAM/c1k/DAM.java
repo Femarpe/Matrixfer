@@ -1,5 +1,9 @@
 package DAM.c1k;
 
+import graphics.dam.Canvas;
+import graphics.dam.CanvasImp;
+import maths.dam.Matrix2D;
+
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -99,14 +103,15 @@ public class DAM {
         return DAM.saveImage(path, DAM.createImageFromArray(image, width, height), format);
     }
 
-    private static int[][] convertToMatrix2D(BufferedImage image) {
+    public static Matrix2D convertToMatrix2D(BufferedImage image) {
+        CanvasImp canvas = new CanvasImp() ;
         int width = image.getWidth();
         int height = image.getHeight();
-        int[][] result = new int[height][width];
-
+        Matrix2D result = new Matrix2D();
+        result.create(width,height);
         for (int row = 0; row < height; row++) {
             for (int col = 0; col < width; col++)
-                result[row][col] = image.getRGB(col, row);
+                result.setValues(row,col,(image.getRGB(row,col))*+1);
         }
         return result;
    }

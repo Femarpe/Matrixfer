@@ -22,7 +22,14 @@ public class Matrix2D {
         height = h;
     }
 
+    public void setValue(double x, double y, int val) {
+
+
+        cells[(int) (getWidth() * y + x)] = val;
+
+    }
     public void setValues(int x, int y, int val) {
+
 
         cells[getWidth() * y + x] = val;
 

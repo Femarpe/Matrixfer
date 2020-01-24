@@ -7,13 +7,14 @@ import maths.dam.Matrix2D;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.IOException;
 
 public class Game {
     public void movimientos(){
 
     }
 
-    public void startGame() {
+    public void startGame() throws IOException {
         CanvasImp canvas = new CanvasImp();
         Matrix2D m = new Matrix2D(1000, 1000);
         int background = canvas.toARGB(255, 255, 255, 255);
@@ -87,7 +88,7 @@ public class Game {
 
             /**Gato*/
 
-            p.pintarCaraMalGato(m, mx, my, mxojo, myojo);
+            p.pintarCaraMalGato(m, mx, my);
 
             if (mx <= -700) {
                 mx += velocidadGato;
@@ -120,7 +121,7 @@ public class Game {
                 my += velocidadGato;
                 myojo = my + velocidadGato;
             }
-            dis = helpers.computeDistance2D(x, mx + 700, y, my + 700);
+            dis = helpers.computeDistance2D(x, mx +640 , y, my +640   );
             //System.out.println(helpers.computeDistance2D(x, mx + 700, y, my + 700));
             if (dis < 160) {
                 vida -= damage;
